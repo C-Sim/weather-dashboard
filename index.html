@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <header class="header">Weather Dashboard</header>
+
+    <main class="main">
+      <div class="search-history-container">
+        <section class="search-container">
+          <form class="select-city">
+            <input class="input-city" placeholder="Select a City" />
+            <button class="search-button" type="submit">Search</button>
+          </form>
+        </section>
+
+        <section class="search-history">
+          <div><button class="city-button" type="submit">Kyoto</button></div>
+          <div>
+            <button class="city-button" type="submit">Rio de Janeiro</button>
+          </div>
+          <div>
+            <button class="city-button" type="submit">Cape Town</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- <section class="forecast-weather"> -->
+      <section class="weather-container">
+        <div class="current-weather">
+          <img class="weather-icon" src="assets/images/sun.png" />
+          <div>
+            <h1>City Name</h1>
+            <p>Temperature:</p>
+            <p>Wind: mph</p>
+            <p>Humidity: %</p>
+            <p id="indexUV">UV index:</p>
+          </div>
+        </div>
+
+        <div class="forecast-container">
+          <div class="forecast">
+            <h2>dd/mm/yyyy</h2>
+            <img />
+            <p>Temperature:</p>
+            <p>Wind: mph</p>
+            <p>Humidity: %</p>
+          </div>
+          <div class="forecast">
+            <h2>dd/mm/yyyy</h2>
+            <img />
+            <p>Temperature:</p>
+            <p>Wind: mph</p>
+            <p>Humidity: %</p>
+          </div>
+          <div class="forecast">
+            <h2>dd/mm/yyyy</h2>
+            <img />
+            <p>Temperature:</p>
+            <p>Wind: mph</p>
+            <p>Humidity: %</p>
+          </div>
+          <div class="forecast">
+            <h2>dd/mm/yyyy</h2>
+            <img />
+            <p>Temperature:</p>
+            <p>Wind: mph</p>
+            <p>Humidity: %</p>
+          </div>
+          <div class="forecast">
+            <h2>dd/mm/yyyy</h2>
+            <img />
+            <p>Temperature:</p>
+            <p>Wind: mph</p>
+            <p>Humidity: %</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <i class="fa-solid fa-crown"></i> Created by C-Sim &copy 2022
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>

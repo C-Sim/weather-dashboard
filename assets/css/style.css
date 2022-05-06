@@ -1,0 +1,144 @@
+/* color palette */
+:root {
+  --powder-blue: #b8d8d8ff;
+  --cadet-blue: #c8c8c8;
+  --deep-space-sparkle: #4f6367ff;
+  --beige: #eef5dbff;
+  --orange-red-crayola: #fe5f55ff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cadet-blue);
+}
+
+/* header */
+.header {
+  background-color: var(--deep-space-sparkle);
+  color: var(--cadet-blue);
+  text-align: center;
+  padding: 8px;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-history-container {
+  width: 25%;
+  margin-left: 8px;
+}
+
+.input-city {
+  margin: 8px 0 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.search-button {
+  background-color: var(--deep-space-sparkle);
+  color: var(--beige);
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  padding: 2px;
+  margin-bottom: 18px;
+}
+
+.city-button {
+  margin: 8px 0;
+  width: 100%;
+  padding: 2px;
+  border-radius: 8px;
+  border: none;
+  color: var(--deep-space-sparkle);
+  background-color: var(--beige);
+}
+
+.search-button:hover,
+.city-button:hover {
+  color: var(--orange-red-crayola);
+}
+
+.weather-container {
+  justify-content: center;
+  width: 72%;
+  color: var(--beige);
+}
+
+.current-weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  color: var(--beige);
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0 12px;
+  margin: 8px -1px;
+}
+
+.weather-icon {
+  padding: 8px 10%;
+  margin-right: 18%;
+  height: 12rem;
+  width: auto;
+  justify-content: left;
+}
+
+.current-weather h1 {
+  font-size: 1.2rem;
+  color: var(--deep-space-sparkle);
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.forecast-container h2 {
+  font-size: 0.9rem;
+  font-size: medium;
+  color: var(--deep-space-sparkle);
+}
+
+.forecast {
+  padding: 0 12px;
+  margin: 8px -1px;
+  text-align: center;
+  font-size: 0.8rem;
+  border-left: 2px solid var(--deep-space-sparkle);
+  border-right: 2px solid var(--deep-space-sparkle);
+}
+
+/* footer */
+.footer {
+  background-color: var(--deep-space-sparkle);
+  color: var(--cadet-blue);
+  text-align: center;
+  padding: 8px;
+  width: 100%;
+}
+
+/* mobile viewport styles */
+@media screen and (max-width: 576px) {
+  .forecast-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* mobile viewport styles */
+@media screen and (max-width: 992px) {
+}
