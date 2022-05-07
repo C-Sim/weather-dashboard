@@ -122,6 +122,26 @@ span {
   font-size: 100%;
 }
 
+.lowUV {
+  color: green;
+}
+
+.moderateUV {
+  color: yellow;
+}
+
+.highUV {
+  color: orange;
+}
+
+.veryHighUV {
+  color: red;
+}
+
+.extremeUV {
+  color: purple;
+}
+
 /* bottom 5-day forecast section */
 #forecast-container {
   display: flex;
