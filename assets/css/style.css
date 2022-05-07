@@ -30,25 +30,32 @@ body {
   font-size: 1.8rem;
 }
 
-.main {
+#main {
   flex-grow: 2;
   display: flex;
   flex-direction: row;
 }
 
 /* search and search history section */
-.search-history-container {
+#search-history-container {
   width: 25%;
   margin-left: 8px;
 }
 
-.input-city {
+#input-city {
   margin: 8px 0 8px;
   text-align: center;
   width: 100%;
 }
 
-.search-button {
+.message {
+  color: var(--orange-red-crayola);
+  font-size: 80%;
+  font-weight: 100;
+  text-align: center;
+}
+
+#search-button {
   background-color: var(--deep-space-sparkle);
   color: var(--beige);
   border-radius: 8px;
@@ -58,7 +65,7 @@ body {
   margin-bottom: 18px;
 }
 
-.city-button {
+#city-button {
   margin: 8px 0;
   width: 100%;
   padding: 2px;
@@ -68,13 +75,13 @@ body {
   background-color: var(--beige);
 }
 
-.search-button:hover,
-.city-button:hover {
+#search-button:hover,
+#city-button:hover {
   color: var(--orange-red-crayola);
 }
 
 /* dashboard section */
-.weather-container {
+#weather-container {
   width: 70%;
   color: var(--beige);
   margin-left: 5%;
@@ -87,7 +94,7 @@ body {
   flex-direction: row;
   justify-content: right;
   color: var(--beige);
-  text-align: center;
+  text-align: right;
   font-size: 100%;
   padding: 1% 3%;
   margin: 2% -1px;
@@ -100,14 +107,23 @@ body {
   height: auto;
 }
 
-.current-weather-info h1,
-h2 {
+.current-weather-info h1 {
+  font-size: 150%;
+  color: var(--deep-space-sparkle);
+}
+
+.current-weather-info h2 {
   font-size: 100%;
   color: var(--deep-space-sparkle);
 }
 
+span {
+  color: var(--orange-red-crayola);
+  font-size: 100%;
+}
+
 /* bottom 5-day forecast section */
-.forecast-container {
+#forecast-container {
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -148,8 +164,8 @@ h2 {
 
 /* mobile viewport styles */
 @media screen and (max-width: 576px) {
-  .main,
-  .forecast-container {
+  #main,
+  #forecast-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,11 +173,11 @@ h2 {
     margin-left: 0;
   }
 
-  .search-history-container {
+  #search-history-container {
     width: 75%;
   }
 
-  .weather-container {
+  #weather-container {
     width: 100%;
     align-items: center;
   }
@@ -169,6 +185,7 @@ h2 {
   .current-weather {
     justify-content: center;
     margin-right: 12px;
+    text-align: center;
   }
 
   .weather-icon {
@@ -190,10 +207,3 @@ h2 {
     padding: 8px 48px;
   }
 }
-
-/* small screen viewport styles */
-/* @media screen and (max-width: 992px) {
-  .weather-container {
-    width: 50%;
-  }
-} */
