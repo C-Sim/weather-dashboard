@@ -18,15 +18,15 @@
     <header class="header">Weather Dashboard</header>
 
     <main class="main">
-      <div class="search-history-container">
-        <section class="search-container">
+      <section class="search-history-container">
+        <div class="search-container">
           <form class="select-city">
             <input class="input-city" placeholder="Select a City" />
             <button class="search-button" type="submit">Search</button>
           </form>
-        </section>
+        </div>
 
-        <section class="search-history">
+        <div class="search-history">
           <div><button class="city-button" type="submit">Kyoto</button></div>
           <div>
             <button class="city-button" type="submit">Rio de Janeiro</button>
@@ -34,15 +34,15 @@
           <div>
             <button class="city-button" type="submit">Cape Town</button>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <!-- <section class="forecast-weather"> -->
       <section class="weather-container">
         <div class="current-weather">
           <img class="weather-icon" src="assets/images/sun.png" />
-          <div>
+          <div class="current-weather-info">
             <h1>City Name</h1>
+            <h2>dd/mmm/yyyy</h2>
             <p>Temperature:</p>
             <p>Wind: mph</p>
             <p>Humidity: %</p>
@@ -52,39 +52,59 @@
 
         <div class="forecast-container">
           <div class="forecast">
-            <h2>dd/mm/yyyy</h2>
-            <img />
-            <p>Temperature:</p>
-            <p>Wind: mph</p>
-            <p>Humidity: %</p>
+            <div>
+              <img class="small-weather-icon" src="assets/images/sun.png" />
+            </div>
+            <div class="forecast-weather-info">
+              <h2>dd/mmm</h2>
+              <p>Temperature:</p>
+              <p>Wind: mph</p>
+              <p>Humidity: %</p>
+            </div>
           </div>
           <div class="forecast">
-            <h2>dd/mm/yyyy</h2>
-            <img />
-            <p>Temperature:</p>
-            <p>Wind: mph</p>
-            <p>Humidity: %</p>
+            <div>
+              <img class="small-weather-icon" src="assets/images/sun.png" />
+            </div>
+            <div class="forecast-weather-info">
+              <h2>dd/mmm</h2>
+              <p>Temperature:</p>
+              <p>Wind: mph</p>
+              <p>Humidity: %</p>
+            </div>
           </div>
           <div class="forecast">
-            <h2>dd/mm/yyyy</h2>
-            <img />
-            <p>Temperature:</p>
-            <p>Wind: mph</p>
-            <p>Humidity: %</p>
+            <div>
+              <img class="small-weather-icon" src="assets/images/sun.png" />
+            </div>
+            <div class="forecast-weather-info">
+              <h2>dd/mmm</h2>
+              <p>Temperature:</p>
+              <p>Wind: mph</p>
+              <p>Humidity: %</p>
+            </div>
           </div>
           <div class="forecast">
-            <h2>dd/mm/yyyy</h2>
-            <img />
-            <p>Temperature:</p>
-            <p>Wind: mph</p>
-            <p>Humidity: %</p>
+            <div>
+              <img class="small-weather-icon" src="assets/images/sun.png" />
+            </div>
+            <div class="forecast-weather-info">
+              <h2>dd/mmm</h2>
+              <p>Temperature:</p>
+              <p>Wind: mph</p>
+              <p>Humidity: %</p>
+            </div>
           </div>
           <div class="forecast">
-            <h2>dd/mm/yyyy</h2>
-            <img />
-            <p>Temperature:</p>
-            <p>Wind: mph</p>
-            <p>Humidity: %</p>
+            <div>
+              <img class="small-weather-icon" src="assets/images/sun.png" />
+            </div>
+            <div class="forecast-weather-info">
+              <h2>dd/mmm</h2>
+              <p>Temperature:</p>
+              <p>Wind: mph</p>
+              <p>Humidity: %</p>
+            </div>
           </div>
         </div>
       </section>
