@@ -112,8 +112,24 @@ const writeToLocalStorage = (key, value) => {
 };
 
 const renderWeatherData = (city) => {
+  // set http method
+  const fetchOptions = { method: "GET" };
+
   // use API to fetch current weather data
   const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+
+  const handleAsync = async () => {
+    try {
+      const response = await fetch(currentWeatherUrl, fetchOptions);
+      if (response.ok) {
+        const data = await response.json();
+      } else {
+        throw new error("error");
+      }
+    } catch (error) {
+      handleError();
+    }
+  };
 
   // from the response cherry pick all the data you want to see in the current weather card
 
