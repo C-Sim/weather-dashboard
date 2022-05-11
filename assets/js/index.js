@@ -212,12 +212,13 @@ const renderWeatherData = async (city) => {
     // empty container
     weatherContainer.empty();
 
+    // HITTING this
     console.log(weatherData);
 
     // render current data
     renderCurrentWeather(weatherData);
 
-    // NOT hitting this
+    // NOT hitting this and catching error instead
     console.log(weatherData);
 
     // render forecast data
@@ -225,6 +226,7 @@ const renderWeatherData = async (city) => {
 
     return true;
   } catch (error) {
+    console.log(error.message);
     renderError();
     return false;
   }
@@ -234,7 +236,9 @@ const renderCurrentWeather = (data) => {
   console.log(data);
   // render the current weather data and append to section
   weatherContainer.append(`<div class="current-weather">
-    <img class="weather-icon" src=${weatherIcon} />
+    <img class="weather-icon" src="http://openweathermap.org/img/w/${
+      data.weatherData.current.weather[0].icon
+    }.png" />
     <div class="current-weather-info">
   <h1>${data.name}</h1>
   <h2>${moment
@@ -256,7 +260,9 @@ const renderForecastWeather = (data) => {
     const forecast = `<div id="forecast-container">
     <div class="forecast">
         <div>
-        <img class="small-weather-icon" src=${each.weather[0].icon} />
+        <img class="small-weather-icon" src="http://openweathermap.org/img/w/${
+          each.weather[0].icon
+        }.png" />
         </div>
         <div class="forecast-weather-info">
         <h2>${moment.unix(each.dt).format("Do MMM")}</h2>
