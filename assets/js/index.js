@@ -12,7 +12,9 @@ const searchHistory = $("#search-history");
 
 const cityButton = $("#city-button");
 
-const weatherContainer = $("#weatherContainer");
+const weatherContainer = $("#weather-container");
+
+const currentWeather = $("current-weather");
 
 const forecastContainer = $("#forecast-container");
 
@@ -44,22 +46,20 @@ const renderCities = () => {
   // get recent cities from LS []
   const recentCities = readFromLocalStorage();
 
-  const message = "Your 6 most recent searches will be saved here.";
+  const message = "Your most recent searches will be saved here.";
 
   // if [] is empty then render alert
   if (!recentCities.length) {
-    searchHistoryContainer.append(`<h2 class="message">${message}</h2>`);
+    searchHistory.append(`<h2 class="message">${message}</h2>`);
   } else {
     // else render all recent cities
-    searchHistoryContainer.append(`<div id="search-history">
-    <div>`);
 
     // TODO try map function
     for (let i = 0; i < 6; i += 1) {
       if (!recentCities[i]) {
       } else {
-        searchHistoryContainer.append(`<button data-city="${recentCities[i]}" id="city-button" type="submit">${recentCities[i]}</button></div>
-    <div>`);
+        searchHistory.append(`<div><button data-city="${recentCities[i]}" id="city-button" type="submit">${recentCities[i]}</button></div>
+        `);
       }
     }
   }
@@ -78,8 +78,11 @@ const handleFormSubmit = async (event) => {
   // if city name is empty display message
   if (!city) {
     form.append(`<h2 class="message">${message}</h2>`);
-  } else if (renderStatus) {
-    // else if status is positive, write to local storage and render weather data
+  } else {
+    // TODO else if (renderstatus) i.e. renderstatus is truthy, write to local storage and render weather data
+
+    // remove message
+    form.children().last().remove();
 
     // add city to start of array in LS
     const recentCities = readFromLocalStorage();
@@ -87,20 +90,20 @@ const handleFormSubmit = async (event) => {
 
     writeToLocalStorage("cities", recentCities);
 
-    searchHistoryContainer.children().last().remove();
+    searchHistory.empty();
 
     renderCities();
   }
 };
 
 const handleButtonClick = async (event) => {
-  //   event.preventDefault();
+  event.preventDefault();
 
   // find target from search history section
   const target = $(event.target);
 
   // if target is button, record value and write to LS
-  if (target.is("button")) {
+  if (target.is('button[id="city-button"]')) {
     // TODO - fix search history click function - returning button text as null
     const city = target.attr("data-city");
 
@@ -112,7 +115,7 @@ const handleButtonClick = async (event) => {
 
     writeToLocalStorage("cities", recentCities);
 
-    searchHistoryContainer.children().last().remove();
+    searchHistory.empty();
 
     renderCities();
   }
@@ -132,11 +135,14 @@ const constructUrl = (baseUrl, params) => {
 };
 
 const fetchData = async (url, options = {}) => {
+  console.log(url);
+
   try {
     const response = await fetch(url, options);
 
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       return data;
     } else {
       throw new Error("Failed to fetch data");
@@ -157,16 +163,22 @@ const fetchWeatherData = async (city) => {
     }
   );
 
+  console.log(currentWeatherUrl);
+
   // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
+
+  console.log(currentWeatherUrl);
 
   // get latitude and longitude for city names
   const cityName = currentData?.name || [];
   const latitude = currentData?.coord?.lat || [];
   const longitude = currentData?.coord?.lon || [];
 
+  console.log(cityName, latitude, longitude);
+
   // apply latitude and longitude to onecall api
-  const forecastWeatherUrl = constructURL(
+  const forecastWeatherUrl = constructUrl(
     "https://api.openweathermap.org/data/2.5/onecall",
     {
       lat: latitude,
@@ -177,8 +189,12 @@ const fetchWeatherData = async (city) => {
     }
   );
 
+  console.log(forecastWeatherUrl);
+
   // await fetch response
   const forecastData = await fetchData(forecastWeatherUrl);
+
+  console.log(forecastData);
 
   // return data retrieved from api
   return {
@@ -188,15 +204,21 @@ const fetchWeatherData = async (city) => {
 };
 
 const renderWeatherData = async (city) => {
+  console.log(city);
   try {
     // fetch weather data
     const weatherData = await fetchWeatherData(city);
 
     // empty container
-    weatherInfoContainer.empty();
+    weatherContainer.empty();
+
+    console.log(weatherData);
 
     // render current data
     renderCurrentWeather(weatherData);
+
+    // NOT hitting this
+    console.log(weatherData);
 
     // render forecast data
     renderForecastWeather(weatherData);
@@ -209,6 +231,7 @@ const renderWeatherData = async (city) => {
 };
 
 const renderCurrentWeather = (data) => {
+  console.log(data);
   // render the current weather data and append to section
   weatherContainer.append(`<div class="current-weather">
     <img class="weather-icon" src=${weatherIcon} />
@@ -251,7 +274,7 @@ const renderForecastWeather = (data) => {
     .map(createForecastByDate)
     .join("");
 
-  forecastContainer.append(forecastByDate);
+  weatherContainer.append(forecastByDate);
 };
 
 const renderError = () => {
@@ -260,7 +283,7 @@ const renderError = () => {
 
   const message = "Oops, that didn't work. Please try again.";
 
-  const alert = weatherContainer.append(`<h2 class="message">${message}</h2>`);
+  weatherContainer.append(`<h2 class="message">${message}</h2>`);
 };
 
 const uvIndexColor = () => {};
