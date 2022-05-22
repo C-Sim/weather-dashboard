@@ -168,7 +168,7 @@ const fetchWeatherData = async (city) => {
   // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
 
-  console.log(currentWeatherUrl);
+  console.log(currentData);
 
   // get latitude and longitude for city names
   const cityName = currentData?.name || [];
@@ -245,8 +245,8 @@ const renderCurrentWeather = (data) => {
     .unix(data.weatherData.current.dt)
     .format("dddd Do MMMM YYYY")}</h2>
   <p>Temperature: <span>${data.weatherData.current.temp}&deg;C</span></p>
-  <p>Wind: <span>${data.weatherData.current.wind_speed * 2.23694}</span></p>
-  <p>Humidity: <span>${data.weatherData.current.humidity}</span></p>
+  <p>Wind: <span>${data.weatherData.current.wind_speed * 2.2}mph</span></p>
+  <p>Humidity: <span>${data.weatherData.current.humidity}%</span></p>
   <p id="indexUV">UV index: <span class="highUV">${
     data.weatherData.current.uvi
   }</span></p>
@@ -266,9 +266,9 @@ const renderForecastWeather = (data) => {
         </div>
         <div class="forecast-weather-info">
         <h2>${moment.unix(each.dt).format("Do MMM")}</h2>
-        <p>Temperature: <span>${each.temp.day}</span></p>
-        <p>Wind: <span>${each.wind_speed}</span></p>
-        <p>Humidity: <span>${each.humidity}</span></p>
+        <p>Temperature: <span>${each.temp.day}&deg;C</span></p>
+        <p>Wind: <span>${each.wind_speed * 2.2}mph</span></p>
+        <p>Humidity: <span>${each.humidity}%</span></p>
         </div>
     </div>`;
 
