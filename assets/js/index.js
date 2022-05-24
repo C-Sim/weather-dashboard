@@ -77,7 +77,7 @@ const handleFormSubmit = async (event) => {
   // if city name is empty or nothing returned for value entered (e.g. not a city), display message
   if (!city || !renderStatus) {
     form.append(`<h2 class="message" id="enter-message">${message}</h2>`);
-  } else if (!recentCities.slice(1, 6).includes(city) && renderStatus) {
+  } else if (!recentCities.slice(0, 5).includes(city) && renderStatus) {
     // else if city isn't already in recent searches and renderstatus is truthy, write to local storage and render weather data
 
     // remove message
@@ -269,9 +269,10 @@ const renderForecastWeather = (data) => {
   };
 
   const forecastByDate = data.weatherData.daily
-    .slice(1, 6)
+    .slice(0, 5)
     .map(createForecastByDate);
-  // .join("");
+
+  $("#forecast-container div").first().addClass("tomorrow");
 
   forecastContainer.append(forecastByDate);
 
