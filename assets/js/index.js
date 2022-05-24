@@ -107,16 +107,6 @@ const handleButtonClick = async (event) => {
     const city = target.attr("data-city");
 
     await renderWeatherData(city);
-
-    // add city to start of array in LS
-    const recentCities = readFromLocalStorage();
-    recentCities.unshift(city);
-
-    writeToLocalStorage("cities", recentCities);
-
-    searchHistory.empty();
-
-    renderCities();
   }
 };
 
@@ -257,8 +247,10 @@ const renderCurrentWeather = (data) => {
 
 const renderForecastWeather = (data) => {
   // render the forecast weather data and append each card to section
+  const forecastContainer = $(`<div id="forecast-container"></div>`);
+
   const createForecastByDate = (each) => {
-    const forecast = `<div id="forecast-container">
+    const forecast = `
     <div class="forecast">
         <div>
         <img class="small-weather-icon" src="http://openweathermap.org/img/w/${
@@ -270,7 +262,7 @@ const renderForecastWeather = (data) => {
         <p><span>${each.temp.day}&deg;C</span></p>
         <p>Wind<span>${Math.round(each.wind_speed * 2.23694)}mph</span></p>
         <p>Humidity<span>${each.humidity}%</span></p>
-        </div>
+       
     </div>`;
 
     return forecast;
@@ -278,10 +270,12 @@ const renderForecastWeather = (data) => {
 
   const forecastByDate = data.weatherData.daily
     .slice(1, 6)
-    .map(createForecastByDate)
-    .join("");
+    .map(createForecastByDate);
+  // .join("");
 
-  weatherContainer.append(forecastByDate);
+  forecastContainer.append(forecastByDate);
+
+  weatherContainer.append(forecastContainer);
 };
 
 const renderError = () => {

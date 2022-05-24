@@ -157,19 +157,22 @@ span {
   flex-direction: row;
   justify-content: right;
   padding: 2% 0;
+  width: 75%;
+  margin-left: 30%;
 }
 
 .forecast {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1% 2%;
-  margin: 2% -1px;
+  padding: 0% 1% 2%;
+  margin: 0% -0.5%;
+  margin-left: 0;
   text-align: center;
   font-size: 80%;
   font-weight: 200;
-  /* border-left: 2px solid var(--deep-space-sparkle);
-  border-right: 2px solid var(--deep-space-sparkle); */
+  border-left: 2px solid var(--deep-space-sparkle);
+  border-right: 2px solid var(--deep-space-sparkle);
 }
 
 .forecast-weather-info h2 {
@@ -215,8 +218,7 @@ span {
 
   .current-weather {
     justify-content: center;
-    margin-right: 12px;
-    /* text-align: center; */
+    margin-right: 10%;
   }
 
   .weather-icon {
@@ -227,8 +229,10 @@ span {
 
   .forecast {
     flex-direction: row;
+    justify-content: center;
     text-align: right;
     margin: 0;
+    margin-right: 12%;
     padding: 0;
     border: none;
   }
