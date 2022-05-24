@@ -9,20 +9,20 @@ A simple calendar application that allows a user to save events for each hour of
 - HTML
 - CSS
 - JavaScript
-  <!-- - Objects
-  - Loops
+  - Mapping
+  - Arrays
   - Conditional Statements
 - Web APIs
-  <!-- - Local Storage -->
+  - Local Storage
 - Third Party APIs
-  <!-- - jQuery
-    - Event Listeners
-    - Template Strings
-    - Document Loading
-    - Attributes
-    - Targeting
-  - Bootstrap
-  - Moment.js -->
+  - OneCall Weather API
+  - jQuery
+  - JSON
+  - Event Listeners
+  - Template Strings
+  - Document Loading
+  - Attributes
+  - Targeting
 - GitHub Pages
 
 ## Screenshots
