@@ -122,29 +122,33 @@ body {
 }
 
 span {
-  color: var(--orange-red-crayola);
+  background-color: var(--orange-red-crayola);
+  color: var(--beige);
   font-size: 100%;
   font-weight: 400;
+  padding: 2px 4px;
+  margin: 4px;
+  border-radius: 4px;
 }
 
 .lowUV {
-  color: green;
+  background-color: green;
 }
 
 .moderateUV {
-  color: yellow;
+  background-color: yellow;
 }
 
 .highUV {
-  color: orange;
+  background-color: orange;
 }
 
 .veryHighUV {
-  color: red;
+  background-color: red;
 }
 
 .extremeUV {
-  color: purple;
+  background-color: purple;
 }
 
 /* bottom 5-day forecast section */
@@ -164,8 +168,8 @@ span {
   text-align: center;
   font-size: 80%;
   font-weight: 200;
-  border-left: 2px solid var(--deep-space-sparkle);
-  border-right: 2px solid var(--deep-space-sparkle);
+  /* border-left: 2px solid var(--deep-space-sparkle);
+  border-right: 2px solid var(--deep-space-sparkle); */
 }
 
 .forecast-weather-info h2 {
@@ -212,7 +216,7 @@ span {
   .current-weather {
     justify-content: center;
     margin-right: 12px;
-    text-align: center;
+    /* text-align: center; */
   }
 
   .weather-icon {
@@ -223,6 +227,7 @@ span {
 
   .forecast {
     flex-direction: row;
+    text-align: right;
     margin: 0;
     padding: 0;
     border: none;

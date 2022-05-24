@@ -14,7 +14,7 @@ const cityButton = $("#city-button");
 
 const weatherContainer = $("#weather-container");
 
-const currentWeather = $("current-weather");
+const currentWeather = $(".current-weather");
 
 const forecastContainer = $("#forecast-container");
 
@@ -37,16 +37,14 @@ const readFromLocalStorage = () => {
   // get from LS by key
   const getCities = localStorage.getItem("cities");
   // parse LS data
-  const parsedData = JSON.parse(getCities);
-  return parsedData;
+  return JSON.parse(getCities);
 };
 
-// TODO x2
 const renderCities = () => {
   // get recent cities from LS []
   const recentCities = readFromLocalStorage();
 
-  const message = "Your most recent searches will be saved here.";
+  const message = "Your 6 most recent searches will be saved here.";
 
   // if [] is empty then render alert
   if (!recentCities.length) {
@@ -54,7 +52,6 @@ const renderCities = () => {
   } else {
     // else render all recent cities
 
-    // TODO try map function
     for (let i = 0; i < 6; i += 1) {
       if (!recentCities[i]) {
       } else {
@@ -74,18 +71,21 @@ const handleFormSubmit = async (event) => {
 
   const renderStatus = await renderWeatherData(city);
 
-  const message = "Please enter a city.";
-  // if city name is empty display message
-  if (!city) {
-    form.append(`<h2 class="message">${message}</h2>`);
-  } else {
-    // TODO else if (renderstatus) i.e. renderstatus is truthy, write to local storage and render weather data
+  const recentCities = readFromLocalStorage();
+
+  const message = "Please enter a valid city.";
+  // if city name is empty or nothing returned for value entered (e.g. not a city), display message
+  if (!city || !renderStatus) {
+    form.append(`<h2 class="message" id="enter-message">${message}</h2>`);
+  } else if (!recentCities.slice(1, 6).includes(city) && renderStatus) {
+    // else if city isn't already in recent searches and renderstatus is truthy, write to local storage and render weather data
 
     // remove message
-    form.children().last().remove();
+    const enterMessage = $("#enter-message");
+    enterMessage.remove();
 
     // add city to start of array in LS
-    const recentCities = readFromLocalStorage();
+
     recentCities.unshift(city);
 
     writeToLocalStorage("cities", recentCities);
@@ -104,7 +104,6 @@ const handleButtonClick = async (event) => {
 
   // if target is button, record value and write to LS
   if (target.is('button[id="city-button"]')) {
-    // TODO - fix search history click function - returning button text as null
     const city = target.attr("data-city");
 
     await renderWeatherData(city);
@@ -244,14 +243,14 @@ const renderCurrentWeather = (data) => {
   <h2>${moment
     .unix(data.weatherData.current.dt)
     .format("dddd Do MMMM YYYY")}</h2>
-  <p>Temperature: <span> ${data.weatherData.current.temp}&deg;C</span></p>
-  <p>Wind: <span> ${Math.round(
+  <p>Temperature<span>${data.weatherData.current.temp}&deg;C</span></p>
+  <p>Wind<span>${Math.round(
     data.weatherData.current.wind_speed * 2.23694
   )}mph</span></p>
-  <p>Humidity: <span> ${data.weatherData.current.humidity}%</span></p>
-  <p id="indexUV">UV index: <span class="${uvIndexColor(each.uvi)}"> ${
+  <p>Humidity<span>${data.weatherData.current.humidity}%</span></p>
+  <p id="indexUV">UV index<span class="${uvIndexColor(
     data.weatherData.current.uvi
-  }</span></p>
+  )}">${data.weatherData.current.uvi}</span></p>
     </div>
     </div>`);
 };
@@ -259,8 +258,6 @@ const renderCurrentWeather = (data) => {
 const renderForecastWeather = (data) => {
   // render the forecast weather data and append each card to section
   const createForecastByDate = (each) => {
-    // const windSpeed = math.round(each.wind_speed * 2.23694);
-
     const forecast = `<div id="forecast-container">
     <div class="forecast">
         <div>
@@ -270,9 +267,9 @@ const renderForecastWeather = (data) => {
         </div>
         <div class="forecast-weather-info">
         <h2>${moment.unix(each.dt).format("Do MMM")}</h2>
-        <p>Temperature: <span>${each.temp.day}&deg;C</span></p>
-        <p>Wind: <span>${Math.round(each.wind_speed * 2.23694)}mph</span></p>
-        <p>Humidity: <span>${each.humidity}%</span></p>
+        <p><span>${each.temp.day}&deg;C</span></p>
+        <p>Wind<span>${Math.round(each.wind_speed * 2.23694)}mph</span></p>
+        <p>Humidity<span>${each.humidity}%</span></p>
         </div>
     </div>`;
 
