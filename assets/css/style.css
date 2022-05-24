@@ -28,6 +28,7 @@ body {
   padding: 8px;
   width: 100%;
   font-size: 1.8rem;
+  font-weight: 300;
 }
 
 #main {
@@ -96,6 +97,7 @@ body {
   color: var(--beige);
   text-align: right;
   font-size: 100%;
+  font-weight: 100;
   padding: 1% 3%;
   margin: 2% -1px;
 }
@@ -110,16 +112,19 @@ body {
 .current-weather-info h1 {
   font-size: 150%;
   color: var(--deep-space-sparkle);
+  font-weight: 500;
 }
 
 .current-weather-info h2 {
   font-size: 100%;
   color: var(--deep-space-sparkle);
+  font-weight: 300;
 }
 
 span {
   color: var(--orange-red-crayola);
   font-size: 100%;
+  font-weight: 400;
 }
 
 .lowUV {
@@ -158,6 +163,7 @@ span {
   margin: 2% -1px;
   text-align: center;
   font-size: 80%;
+  font-weight: 200;
   border-left: 2px solid var(--deep-space-sparkle);
   border-right: 2px solid var(--deep-space-sparkle);
 }
@@ -165,6 +171,7 @@ span {
 .forecast-weather-info h2 {
   font-size: 100%;
   color: var(--deep-space-sparkle);
+  font-weight: 300;
 }
 
 .small-weather-icon {

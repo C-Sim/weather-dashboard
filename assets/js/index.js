@@ -244,10 +244,12 @@ const renderCurrentWeather = (data) => {
   <h2>${moment
     .unix(data.weatherData.current.dt)
     .format("dddd Do MMMM YYYY")}</h2>
-  <p>Temperature: <span>${data.weatherData.current.temp}&deg;C</span></p>
-  <p>Wind: <span>${data.weatherData.current.wind_speed * 2.2}mph</span></p>
-  <p>Humidity: <span>${data.weatherData.current.humidity}%</span></p>
-  <p id="indexUV">UV index: <span class="highUV">${
+  <p>Temperature: <span> ${data.weatherData.current.temp}&deg;C</span></p>
+  <p>Wind: <span> ${Math.round(
+    data.weatherData.current.wind_speed * 2.23694
+  )}mph</span></p>
+  <p>Humidity: <span> ${data.weatherData.current.humidity}%</span></p>
+  <p id="indexUV">UV index: <span class="${uvIndexColor(each.uvi)}"> ${
     data.weatherData.current.uvi
   }</span></p>
     </div>
@@ -257,6 +259,8 @@ const renderCurrentWeather = (data) => {
 const renderForecastWeather = (data) => {
   // render the forecast weather data and append each card to section
   const createForecastByDate = (each) => {
+    // const windSpeed = math.round(each.wind_speed * 2.23694);
+
     const forecast = `<div id="forecast-container">
     <div class="forecast">
         <div>
@@ -267,7 +271,7 @@ const renderForecastWeather = (data) => {
         <div class="forecast-weather-info">
         <h2>${moment.unix(each.dt).format("Do MMM")}</h2>
         <p>Temperature: <span>${each.temp.day}&deg;C</span></p>
-        <p>Wind: <span>${each.wind_speed * 2.2}mph</span></p>
+        <p>Wind: <span>${Math.round(each.wind_speed * 2.23694)}mph</span></p>
         <p>Humidity: <span>${each.humidity}%</span></p>
         </div>
     </div>`;
@@ -292,7 +296,27 @@ const renderError = () => {
   weatherContainer.append(`<h2 class="message">${message}</h2>`);
 };
 
-const uvIndexColor = () => {};
+const uvIndexColor = (uvi) => {
+  if (uvi >= 0 && uvi < 2.5) {
+    return "lowUV";
+  }
+
+  if (uvi >= 2.5 && uvi < 5.5) {
+    return "moderateUV";
+  }
+
+  if (uvi >= 5.5 && uvi < 7.5) {
+    return "highUV";
+  }
+
+  if (uvi >= 7.5 && uvi < 10.5) {
+    return "veryHighUV";
+  }
+
+  if (uvi >= 10.5) {
+    return "extremeUV";
+  }
+};
 
 $(searchHistoryContainer).click(handleButtonClick);
 
