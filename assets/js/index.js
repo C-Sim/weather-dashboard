@@ -62,7 +62,6 @@ const renderCities = () => {
   }
 };
 
-// TODO remove duplicates in search history
 const handleFormSubmit = async (event) => {
   event.preventDefault();
 
@@ -124,14 +123,12 @@ const constructUrl = (baseUrl, params) => {
 };
 
 const fetchData = async (url, options = {}) => {
-  console.log(url);
-
   try {
     const response = await fetch(url, options);
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+
       return data;
     } else {
       throw new Error("Failed to fetch data");
@@ -143,7 +140,6 @@ const fetchData = async (url, options = {}) => {
 
 const fetchWeatherData = async (city) => {
   // use API to fetch current weather data
-  console.log(city);
   const currentWeatherUrl = constructUrl(
     "https://api.openweathermap.org/data/2.5/weather",
     {
@@ -152,19 +148,13 @@ const fetchWeatherData = async (city) => {
     }
   );
 
-  console.log(currentWeatherUrl);
-
   // await fetch response
   const currentData = await fetchData(currentWeatherUrl);
-
-  console.log(currentData);
 
   // get latitude and longitude for city names
   const cityName = currentData?.name || [];
   const latitude = currentData?.coord?.lat || [];
   const longitude = currentData?.coord?.lon || [];
-
-  console.log(cityName, latitude, longitude);
 
   // apply latitude and longitude to onecall api
   const forecastWeatherUrl = constructUrl(
@@ -178,12 +168,8 @@ const fetchWeatherData = async (city) => {
     }
   );
 
-  console.log(forecastWeatherUrl);
-
   // await fetch response
   const forecastData = await fetchData(forecastWeatherUrl);
-
-  console.log(forecastData);
 
   // return data retrieved from api
   return {
@@ -193,7 +179,6 @@ const fetchWeatherData = async (city) => {
 };
 
 const renderWeatherData = async (city) => {
-  console.log(city);
   try {
     // fetch weather data
     const weatherData = await fetchWeatherData(city);
@@ -202,27 +187,23 @@ const renderWeatherData = async (city) => {
     weatherContainer.empty();
 
     // HITTING this
-    console.log(weatherData);
 
     // render current data
     renderCurrentWeather(weatherData);
 
     // NOT hitting this and catching error instead
-    console.log(weatherData);
 
     // render forecast data
     renderForecastWeather(weatherData);
 
     return true;
   } catch (error) {
-    console.log(error.message);
     renderError();
     return false;
   }
 };
 
 const renderCurrentWeather = (data) => {
-  console.log(data);
   // render the current weather data and append to section
   weatherContainer.append(`<div class="current-weather">
     <img class="weather-icon" src="http://openweathermap.org/img/w/${
@@ -269,10 +250,8 @@ const renderForecastWeather = (data) => {
   };
 
   const forecastByDate = data.weatherData.daily
-    .slice(0, 5)
+    .slice(1, 6)
     .map(createForecastByDate);
-
-  $("#forecast-container div").first().addClass("tomorrow");
 
   forecastContainer.append(forecastByDate);
 

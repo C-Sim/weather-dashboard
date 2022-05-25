@@ -30,14 +30,14 @@ A simple calendar application that allows a user to save events for each hour of
 <details>
 <summary>Desktop viewport</summary>
 
-![desktop-viewport](...)
+![desktop-viewport](./assets/screenshots/wd-desktop.png)
 
 </details>
 
 <details>
 <summary>Mobile viewport</summary>
 
-![mobile-viewport](...)
+![mobile-viewport](./assets/screenshots/wd-mobile.png)
 
 </details>
 </br>

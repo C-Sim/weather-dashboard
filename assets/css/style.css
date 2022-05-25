@@ -157,7 +157,7 @@ span {
   flex-direction: row;
   justify-content: right;
   padding: 2% 0;
-  width: 75%;
+  width: 72%;
   margin-left: 30%;
 }
 
@@ -172,10 +172,9 @@ span {
   font-size: 80%;
   font-weight: 200;
   border-left: 2px solid var(--deep-space-sparkle);
-  /* border-right: 2px solid var(--deep-space-sparkle); */
 }
 
-.tomorrow {
+.forecast:first-child {
   border: none;
 }
 
