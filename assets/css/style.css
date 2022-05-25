@@ -20,7 +20,6 @@ body {
   min-height: 100vh;
 }
 
-/* header */
 .header {
   background-color: var(--deep-space-sparkle);
   color: var(--cadet-blue);
@@ -190,7 +189,6 @@ span {
   padding: 8px 18px;
 }
 
-/* footer */
 .footer {
   background-color: var(--deep-space-sparkle);
   color: var(--cadet-blue);
