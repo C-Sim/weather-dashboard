@@ -1,6 +1,6 @@
 # weather-dashboard
 
-A simple calendar application that allows a user to save events for each hour of the day. The app runs in the browser and features dynamically updated HTML and CSS powered by jQuery.
+A dashboard showing the current and forecast weather for a destination inputted by the user. The app retains the 6 most recent searches without duplication for easy access.
 
 [Deployed GitHub URL](https://c-sim.github.io/weather-dashboard/)
 
