@@ -34,10 +34,8 @@ const onReady = () => {
 
 // get cities from local storage
 const readFromLocalStorage = () => {
-  // get from LS by key
-  const getCities = localStorage.getItem("cities");
-  // parse LS data
-  return JSON.parse(getCities);
+  // get from LS by key & parse LS data
+  return JSON.parse(localStorage.getItem("cities"));
 };
 
 const renderCities = () => {
@@ -53,8 +51,7 @@ const renderCities = () => {
     // else render all recent cities
 
     for (let i = 0; i < 6; i += 1) {
-      if (!recentCities[i]) {
-      } else {
+      if (recentCities[i]) {
         searchHistory.append(`<div><button data-city="${recentCities[i]}" id="city-button" type="submit">${recentCities[i]}</button></div>
         `);
       }
@@ -80,8 +77,7 @@ const handleFormSubmit = async (event) => {
     // else if city isn't already in recent searches and renderstatus is truthy, write to local storage and render weather data
 
     // remove message
-    const enterMessage = $("#enter-message");
-    enterMessage.remove();
+    $("#enter-message").remove();
 
     // add city to start of array in LS
 
